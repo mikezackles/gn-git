@@ -5,19 +5,19 @@
 #
 pkgname='gn-git'
 pkgdesc='Meta-build system which generates Ninja build files'
-pkgver=r694.feb0c39
-pkgrel=2
+pkgver=r853.8e95cd2
+pkgrel=1
 license=('BSD')
 arch=('x86_64' 'i686')
 depends=('glibc' 'gcc-libs')
 makedepends=('python2')
 source=(
 	'https://chromium.googlesource.com/chromium/chromium/+archive/master/third_party/libevent.tar.gz'
-	"git+https://chromium.googlesource.com/chromium/src/tools/gn"
-	"git+https://chromium.googlesource.com/chromium/src/base"
-	"git+https://chromium.googlesource.com/chromium/src/build"
-	"git+https://chromium.googlesource.com/chromium/src/build/config"
-	"git+https://chromium.googlesource.com/chromium/testing/gtest"
+	"git+https://chromium.googlesource.com/chromium/src/tools/gn#commit=9c82e0f"
+	"git+https://chromium.googlesource.com/chromium/src/base#commit=8b58713"
+	"git+https://chromium.googlesource.com/chromium/src/build#commit=d98282f"
+	"git+https://chromium.googlesource.com/chromium/src/build/config#commit=fe7398b"
+	"git+https://chromium.googlesource.com/chromium/testing/gtest#commit=585ec31"
 	LICENSE
 )
 noextract=('libevent.tar.gz' 'gn' 'base' 'build' 'config' 'gtest')
@@ -35,7 +35,7 @@ prepare () {
 	mkdir -p "${srcdir}/work/third_party/libevent"
 	tar -xzf "${srcdir}/libevent.tar.gz" -C "${srcdir}/work/third_party/libevent"
 
-	# Shuffle things around a bit to put everything where it is suppossed to be
+	# Shuffle things around a bit to put everything where it is supposed to be
 	mkdir -p "${srcdir}/work"/{tools,testing}
 	mv "${srcdir}/gn"     "${srcdir}/work/tools"
 	mv "${srcdir}/base"   "${srcdir}/work"
